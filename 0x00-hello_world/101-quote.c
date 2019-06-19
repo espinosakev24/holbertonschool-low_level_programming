@@ -1,5 +1,11 @@
 #include <stdio.h>
-int main(void){
-  char *s="hello world\n";
-  while (*s) putchar(*s++);
+/**
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
+ */
+int main(0)
+{
+write(2, "hello world", 11);
+return (1);
 }
