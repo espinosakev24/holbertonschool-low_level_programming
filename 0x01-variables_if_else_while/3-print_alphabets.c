@@ -14,11 +14,10 @@ while (n <= 122)
 putchar(n);
 n++;
 }
-for (int N = 65; N <= 90; N++)
+for (int a = 65; a <= 90; a++)
 {
-putchar(N);
+putchar(a);
 }
-
 putchar('\n');
 return (0);
 }
