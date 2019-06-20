@@ -17,7 +17,7 @@ if (n != 57)
 	putchar(44);
 	putchar(' ');
 }
-n++;;
+n++;
 }
 putchar('\n');
 return (0);
