@@ -19,8 +19,8 @@ putchar(a);
 if (a != 57 || n != 57)
 {
 putchar(44);
-}
 putchar(' ');
+}
 a++;
 }
 n++;
