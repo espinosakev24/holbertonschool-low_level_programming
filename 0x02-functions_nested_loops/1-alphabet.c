@@ -1,15 +1,15 @@
 #include "holberton.h"
-int man(void)
+void print_alphabet(void)
 {
 int n;
 
 n = 97;
 
-while(n < 122)
+while(n < 123)
 {
 	_putchar(n);
 	n++;
 }
 _putchar('\n');
-return(0);
+
 }
