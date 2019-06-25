@@ -6,13 +6,13 @@
  */
 int main(void)
 {
-char n[10] = "Holberton";
+char n[9] = "Holberton";
 
 int a;
 
 a = 0;
 
-while (a <= 9)
+while (a <= 8 )
 {
 	_putchar(n[a]);
 	a++;
