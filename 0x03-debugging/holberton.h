@@ -1,8 +1,17 @@
-#ifndef HOLBERTON_H
-#define HOLBERTON_H
+#include "holberton.h"
 
-#include <stdio.h>
+/**
+ * largest_number - returns the largest of 3 numbers
+ * @a: first integer
+ * @b: second integer
+ * @c: third integer
+ * Return: largest number
+ */#include "holberton.h"
 
-void positive_or_negative(int i);
-
-#endif /* HOLBERTON_H */
+/**
+ * largest_number - returns the largest of 3 numbers
+ * @a: first integer
+ * @b: second integer
+ * @c: third integer
+ * Return: largest number
+ */
