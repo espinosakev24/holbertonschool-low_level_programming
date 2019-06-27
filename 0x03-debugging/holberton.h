@@ -1,6 +1,5 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
-#include "holberton.h"
 
 /**
  * largest_number - returns the largest of 3 numbers
