@@ -20,10 +20,13 @@ for (a = 1; a <= 100; a++)
 		printf("Fizz");
 		printf(" ");
 	}
-	else if (a % 5 == 0)
+	if ((a % 5 == 0) && (a != 100))
+	{
+		printf("Buzz ");
+	}
+	else if ((a % 5 == 0) && (a == 100))
 	{
 		printf("Buzz");
-		printf(" ");
 	}
 	else
 	{
