@@ -17,21 +17,19 @@ for (a = 1; a <= 100; a++)
 	}
 	else if (a % 3 == 0)
 	{
-		printf("Fizz");
-		printf(" ");
+		printf("Fizz ");
 	}
-	if ((a % 5 == 0) && (a != 100))
+	else if ((a % 5 == 0) && (a != 100))
 	{
 		printf("Buzz ");
 	}
-	else if ((a % 5 == 0) && (a == 100))
+	else if (a % 5 == 0)
 	{
 		printf("Buzz");
 	}
 	else
 	{
-		printf("%d", a);
-		printf(" ");
+		printf("%d ", a);
 	}
 }
 putchar('\n');
