@@ -1,7 +1,7 @@
 #include "holberton.h"
 /**
  * print_line - check the code for Holberton School students.
- *
+ * @n: Variable that the program pass through the function
  * Return: Void
  */
 void print_line(int n)
@@ -14,10 +14,6 @@ if (n > 0)
 	{
 		_putchar(95);
 	}
-	_putchar('\n');
 }
-else
-{
 	_putchar('\n');
-}
 }
