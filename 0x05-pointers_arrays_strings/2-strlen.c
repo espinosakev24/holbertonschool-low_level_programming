@@ -1,9 +1,9 @@
 #include "holberton.h"
 #include <stdio.h>
 /**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
+ * _strlen - check the code for Holberton School students.
+ * @s: pointer to holberton
+ * Return: Always n.
  */
 int _strlen(char *s)
 {
