@@ -9,10 +9,24 @@ void rev_string(char *s)
 	{
 		a++;
 	}
+
+	char buffer[s - a];
+
+	char *p = buffer;
+
+	char *b = p;
+
 	while (s < a)
 	{
 		a--;
-		_putchar(*a);
+		*b = *a;
+		b++;
 	}
-		_putchar('\n');
+
+	while (p < b)
+	{
+		*s = *p;
+		s++;
+		p++;
+	}
 }
