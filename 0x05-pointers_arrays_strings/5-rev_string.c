@@ -4,17 +4,14 @@ void rev_string(char *s)
 {
 
 	char *a = s;
+	char buffer[10];
+	char *p = buffer;
+	char *b = p;
 
 	while (*a != '\0')
 	{
 		a++;
 	}
-
-	char buffer[s - a];
-
-	char *p = buffer;
-
-	char *b = p;
 
 	while (s < a)
 	{
