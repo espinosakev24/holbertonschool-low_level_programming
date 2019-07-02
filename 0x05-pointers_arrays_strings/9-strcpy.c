@@ -1,4 +1,10 @@
 #include "holberton.h"
+/**
+ * *_strcpy - check the code for Holberton School students.
+ * @src: pointer to the source string
+ * @dest: Pointer that will take the source value
+ * Return: Always dest.
+ */
 char *_strcpy(char *dest, char *src)
 {
 	int n = 0;
@@ -10,6 +16,6 @@ char *_strcpy(char *dest, char *src)
 	}
 	dest[n] = '\0';
 
-	return(dest);
+	return (dest);
 
 }
