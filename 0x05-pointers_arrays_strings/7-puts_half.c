@@ -1,13 +1,14 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
- *
+ * puts_half - check the code for Holberton School students.
+ * @str: pointer to the array from 0 to 9
  * Return: Always 0.
  */
 void puts_half(char *str)
 {
 	int n;
 	int l;
+
 	n = 0;
 	l = 0;
 
