@@ -1,5 +1,9 @@
 #include "holberton.h"
-
+/**
+ * rev_string - check the code for Holberton School students.
+ * @s: pointer to the string
+ * Return: Always void.
+ */
 void rev_string(char *s)
 {
 
