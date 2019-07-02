@@ -8,7 +8,7 @@ void rev_string(char *s)
 {
 
 	char *a = s;
-	char buffer[10];
+	char buffer[1000];
 	char *p = buffer;
 	char *b = p;
 
