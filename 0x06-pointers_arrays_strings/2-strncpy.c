@@ -1,8 +1,10 @@
 #include "holberton.h"
 /**
- * main - check the code for Holberton School students.
- *
- * Return: Always 0.
+ * _strncpy - check the code for Holberton School students.
+ * @dest: hello
+ * @src: world!
+ * @n: variable that gives values to the function
+ * Return: Always dest.
  */
 char *_strncpy(char *dest, char *src, int n)
 {
