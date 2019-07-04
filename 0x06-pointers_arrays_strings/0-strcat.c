@@ -3,7 +3,7 @@
  * _strcat - check the code for Holberton School students.
  * @dest: hello
  * @src: world!
- * Return: Always 0.
+ * Return: Always dest.
  */
 char *_strcat(char *dest, char *src)
 {
