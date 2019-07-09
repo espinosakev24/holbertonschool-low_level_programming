@@ -22,11 +22,12 @@ char *_strstr(char *haystack, char *needle)
 	while (*haystack != '\0')
 	{
 	int q = 0;
+
 	a = 0;
 		while (needle[a] != 0)
 		{
 			a++;
-			if (*(haystack + a) == *(needle +a))
+			if (*(haystack + a) == *(needle + a))
 			{
 				q++;
 			}
