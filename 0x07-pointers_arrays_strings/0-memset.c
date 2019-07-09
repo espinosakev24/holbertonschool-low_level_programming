@@ -1,10 +1,10 @@
 #include "holberton.h"
 /**
  * _memset - fill memory with constant
- * @b: the address of memory to print
- * @n: the size of the memory to print
+ * @b: characteres
+ * @n: unsigned variable
  * @s: pointer.
- * Return: Nothing.
+ * Return: s.
  */
 
 char *_memset(char *s, char b, unsigned int n)
