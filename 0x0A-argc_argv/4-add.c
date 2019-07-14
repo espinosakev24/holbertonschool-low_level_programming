@@ -1,11 +1,13 @@
 #include <stdio.h>
- /**
- * main - Program that adds positive numbers
- * @argc: amount of parameters
+/**
+ * main - check the code for Holberton School students.
+ * @argc: counter of parameters
  * @argv: array of pointers
- * Return: 0
+ * Return: Always 0.
  */
-int main(int argc, char argv[]);
+int main(int argc, __attribute__((unused)) char *argv[])
 {
+	argc = ((argc + 1) * (argc + 2));
+	printf("%d\n", argc);
 	return (0);
 }
