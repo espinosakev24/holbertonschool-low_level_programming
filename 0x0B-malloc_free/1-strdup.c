@@ -8,22 +8,22 @@
 char *_strdup(char *str)
 {
 	char *s;
-	int n = 0, a, b = 0;
+	int n = 0, a = 0;
 
-	s = malloc(sizeof(char) * n);
-
-	if (str == NULL || s == NULL)
+	if (str == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
-	s = malloc(sizeof(char) * n);
-
-	while (str[b] != 0)
+	while (str[n] != 0)
 	{
-		b++;
+		n++;
 	}
-	n = b;
+	s = malloc(sizeof(char) * n);
+	if (s == NULL)
+	{
+		return (NULL);
+	}
 
 	/*Calculating the length of the str pointer*/
 	for (n = 0; str[n] != '\0'; n++)
