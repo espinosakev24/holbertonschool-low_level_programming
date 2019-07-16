@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 /**
  * main - check the code for Holberton School students.
  * @argc: counter of parameters
@@ -7,7 +8,16 @@
  */
 int main(int argc, __attribute__((unused)) char *argv[])
 {
-	argc = ((argc + 1) * (argc + 2));
-	printf("%d\n", argc);
+	int a = 0;
+
+	if (argc != 3)
+	{
+		return (1);
+	}
+	else
+	{
+		a = atoi(argv[1]) * atoi(argv[2]);
+		printf("%d\n", a);
+	}
 	return (0);
 }
