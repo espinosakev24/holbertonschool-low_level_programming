@@ -10,19 +10,20 @@ char *_strdup(char *str)
 	char *s;
 	int n = 0, a, b = 0;
 
+	s = malloc(sizeof(char) * n);
+
+	if (str == NULL || s == NULL)
+	{
+		return NULL;
+	}
+
+	s = malloc(sizeof(char) * n);
+
 	while (str[b] != 0)
 	{
 		b++;
 	}
 	n = b;
-	/*reserving the space in memory for s pointer*/
-	s = malloc(sizeof(char) * n);
-
-	/*Checking some requirements for the output*/
-	if (str == NULL || s == NULL)
-	{
-		return (NULL);
-	}
 
 	/*Calculating the length of the str pointer*/
 	for (n = 0; str[n] != '\0'; n++)
