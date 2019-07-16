@@ -25,16 +25,12 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	/*Calculating the length of the str pointer*/
-	for (n = 0; str[n] != '\0'; n++)
-	{
-	}
-
 	/*copying the string of *str inside *s */
 	for (a = 0; str[a]; a++)
 	{
 		s[a] = str[a];
 	}
+	s[a] = a + 1;
 
 	return (s);
 }
