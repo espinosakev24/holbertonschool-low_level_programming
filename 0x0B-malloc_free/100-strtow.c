@@ -8,8 +8,11 @@
  */
 char **strtow(char *str)
 {
-	if (*str == NULL || *str == "")
+int n;
+
+	for (n = 0; n < height; n++)
 	{
-		return (NULL);
+		free(grid[n]);
 	}
+	free(grid);
 }

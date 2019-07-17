@@ -9,14 +9,11 @@
  */
 char *argstostr(int ac, char **av)
 {
-	int *s;
+int n;
 
-	if (ac == 0 || av == NULL)
+	for (n = 0; n < height; n++)
 	{
-		return (NULL);
+		free(grid[n]);
 	}
-	if (s == NULL)
-	{
-		return (NULL);
-	}
+	free(grid);
 }
