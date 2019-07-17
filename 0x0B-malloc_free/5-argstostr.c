@@ -1,19 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * argstostr - prints a grid of integers
- * @ac: the address of the two dimensional grid
- * @av: height of the grid
- *
- * Return: Nothing.
+ * argstostr - concatenates
+ * @ac: arguments
+ * @av: p to arr of p
+ * Return: pointer.
  */
 char *argstostr(int ac, char **av)
 {
-int n;
+	char *s = NULL;
 
-	for (n = 0; n < height; n++)
-	{
-		free(grid[n]);
-	}
-	free(grid);
+	int, a = 0, b = 0, c = 0, d = 0;
+
+	return (s);
 }
