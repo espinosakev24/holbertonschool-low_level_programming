@@ -32,7 +32,7 @@ int **s, r, c;
 			return (NULL);
 		}
 
-		for (c = 0; c <= height; c++)
+		for (c = 0; c <= width; c++)
 		{
 			s[r][c] = 0;
 		}
