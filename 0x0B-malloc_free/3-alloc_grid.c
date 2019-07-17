@@ -17,6 +17,10 @@ int **s, r, c;
 	}
 
 	s = malloc(sizeof(int *) * height);
+	if (s = NULL)
+	{
+		return(NULL);
+	}
 
 	for (r = 0; r < height; r++)
 	{
