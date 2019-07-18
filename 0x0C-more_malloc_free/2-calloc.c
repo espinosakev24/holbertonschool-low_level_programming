@@ -1,6 +1,7 @@
-#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "holberton.h"
 /**
  * _calloc - prints buffer in hexa
  * @nmemb: the address of memory to print
@@ -17,7 +18,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-	s = malloc(nmemb * (sizeof(size)));
+	s = malloc(nmemb * (size));
 	if (s == 0)
 		return (0);
 
