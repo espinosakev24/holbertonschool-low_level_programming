@@ -1,7 +1,4 @@
 #include <stdio.h>
-#ifndef __FILE__
-#define __FILE__
-#endif
 /**
  * main - check the code for Holberton School students.
  *
@@ -9,6 +6,6 @@
  */
 int main(void)
 {
-	printf("%s", __FILE__);
+	printf("%s\n", __FILE__);
 	return (0);
 }
