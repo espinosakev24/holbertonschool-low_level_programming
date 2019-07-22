@@ -3,7 +3,7 @@
 /**
  * free_dog - function that free memory of a struct;
  * @d: pointer to the values of dog struct
- * Return: Always 0.
+ * Return: Nothing.
  */
 void free_dog(dog_t *d);
 {
