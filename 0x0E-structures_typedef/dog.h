@@ -1,5 +1,5 @@
-#ifndef _HOLBERTON_H_
-#define _HOLBERTON_H_
+#ifndef DOG_H
+#define DOG_H
 /**
  * struct dog - structure type containing django datas.
  * @name: name of the dog
