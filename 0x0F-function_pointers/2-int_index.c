@@ -12,22 +12,21 @@ int int_index(int *array, int size, int (*cmp)(int))
 	int n = 0;
 	int a = 0;
 
-	if (array == NULL || cmp == NULL)
+	if (array && cmp)
 	{
-		return (0);
-	}
-	if (size <= 0)
-		return (-1);
+		if (size <= 0)
+			return (-1);
 
-	while (n <= size)
-	{
-		a = cmp(array[n]);
-
-		if (a != 0)
+		while (n <= size)
 		{
-			return (n);
-		}
-	n++;
+			a = cmp(array[n]);
+
+			if (a != 0)
+			{
+				return (n);
+			}
+		n++;
+	}
 	}
 	return (0);
 }
