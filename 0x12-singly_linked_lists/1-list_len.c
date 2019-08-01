@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include "lists.h"
 /**
- * print_list - function that prints the amount of nodes.
+ * list_len - function that counts  amount of nodes.
  * @h: The pointer that points to header of the struct
  * Return: n.
  */
-size_t print_list(const list_t *h)
+size_t list_len(const list_t *h)
 {
 	int n = 0;
 
