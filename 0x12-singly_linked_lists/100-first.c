@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include "lists.h"
 /**
- * startupfun - function that prints before main
- * Return: void.
+ * startupfun - Function to execueted before the main.
+ *
+ * Return: Void.
  */
-void startupsun(void)
+void startupfun(void)
 {
-	printf("You're beat! and yet, you must
-	allow,\nI bore my house upon my back!\n");
+	char *str;
+	str = "I bore my house upon my back!";
+	printf("You're beat! and yet, you must allow,\n%s\n", str);
 }
