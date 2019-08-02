@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "lists.h"
 /**
- * myStartupFun - function that prints before main
+ * startupfun - function that prints before main
  * Return: void.
  */
 void startupsun(void)
