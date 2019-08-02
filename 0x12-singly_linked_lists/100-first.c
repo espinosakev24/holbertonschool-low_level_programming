@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "lists.h"
+void startupfun (void) __attribute__ ((constructor));
 /**
  * startupfun - Function to execueted before the main.
  *
