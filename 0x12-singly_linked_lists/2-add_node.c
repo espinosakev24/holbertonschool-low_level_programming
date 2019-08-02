@@ -11,6 +11,7 @@
 list_t *add_node(list_t **head, const char *str)
 {
 	list_t *kevnode = malloc(sizeof(list_t));
+
 	if (str == NULL)
 	{
 		return (NULL);
