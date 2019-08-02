@@ -11,6 +11,7 @@
 list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *kevnode = malloc(sizeof(list_t));
+	list_t *h = malloc(sizeof(list_t));
 
 	if (kevnode == NULL)
 	{
@@ -28,12 +29,12 @@ list_t *add_node_end(list_t **head, const char *str)
 		*head = kevnode;
 		return (kevnode);
 	}
-
-	while (head->next != NULL)
+	h = *head;
+	while (h->next != NULL)
 	{
-		head = head->next;
+		h = h->next;
 	}
-	head->next = kevnode;
+	h->next = kevnode;
 	return (kevnode);
 }
 /**
