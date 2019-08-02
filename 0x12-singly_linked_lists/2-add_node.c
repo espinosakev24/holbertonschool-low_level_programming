@@ -12,16 +12,12 @@ list_t *add_node(list_t **head, const char *str)
 {
 	list_t *kevnode = malloc(sizeof(list_t));
 
-	if (str == NULL)
-	{
-		return (NULL);
-	}
 	if (kevnode == NULL)
 	{
 		return (NULL);
 	}
 	kevnode->str = strdup(str);
-	kevnode->len = _strlen(kevnode->str);
+	kevnode->len = _strlen(str);
 	kevnode->next = *head;
 	*head = kevnode;
 
@@ -32,7 +28,7 @@ list_t *add_node(list_t **head, const char *str)
  * @s: pointer to holberton
  * Return: Always n.
  */
-int _strlen(char *s)
+int _strlen(const char *s)
 {
 	int n;
 
