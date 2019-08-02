@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 /**
- * add_node - function adds node at the begging of a list.
+ * add_node_end - function adds node at the begging of a list.
  * @head: Double point to head of the list
  * @str: pointer to the string of the list
  * Return: kevnode.
