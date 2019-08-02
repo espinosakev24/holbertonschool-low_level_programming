@@ -16,8 +16,41 @@ list_t *add_node_end(list_t **head, const char *str);
 	{
 		return (NULL);
 	}
-	while (*head != NULL)
+	if (str == NULL)
 	{
-		header = header->next;
+		return (NULL);
 	}
+	kevnode->str = strdup(str);
+	kevnode->len = _strlen(str);
+	kevnode->next = NULL;
+	if (*head == NULL)
+	{
+		*head = kevnode;
+		return (kevnode);
+	}
+
+	while (head->next != NULL)
+	{
+		head = head->next;
+	}
+	head->next = kevnode;
+	return (kevnode);
+}
+/**
+ *_strlen - check the code for Holberton School students.
+ *@s: pointer to holberton
+ *Return: Always n.
+ */
+int _strlen(const char *s)
+{
+	int n;
+
+	n = 0;
+
+	while (*s != '\0')
+	{
+		n++;
+		s++;
+	}
+	return (n);
 }
