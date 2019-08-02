@@ -8,7 +8,7 @@
  * @str: pointer to the string of the list
  * Return: kevnode.
  */
-list_t *add_node_end(list_t **head, const char *str);
+list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *kevnode = malloc(sizeof(list_t));
 
