@@ -2,12 +2,15 @@
 #include "lists.h"
 #include <stdlib.h>
 /**
- *
- *
+ * add_nodeint - function that adds node at the beggining of the list
+ * @head: double pointer to the head of the list
+ * @n: n member that contains an int
+ * Return: the node added
  */
 listint_t *add_nodeint(listint_t **head, const int n)
 {
 	listint_t *new_node;
+
 	new_node = malloc(sizeof(listint_t));
 	if (new_node == NULL)
 	{
