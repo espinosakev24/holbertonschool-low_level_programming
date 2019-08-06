@@ -1,5 +1,5 @@
-#include "lists.h"
 #include <stdlib.h>
+#include "lists.h"
 /**
  * free_listint2 - function that frees a linked list
  * @head: double pointer to the linked list
@@ -9,7 +9,7 @@ void free_listint2(listint_t **head)
 {
 	listint_t *tmp;
 
-	while (tmp != NULL)
+	while (*head != NULL)
 	{
 		tmp = *head;
 		*head = tmp->next;
