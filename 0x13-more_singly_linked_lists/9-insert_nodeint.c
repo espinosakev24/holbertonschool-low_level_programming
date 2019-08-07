@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include "lists.h"
 /**
- *
- *
- *
+ * insert_nodeint_at_index - function that insert a node in a nth position
+ * @idx: index of the function
+ * @n: content of the list
+ * @head: pointer header of the linked list
+ * Return: new node
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
