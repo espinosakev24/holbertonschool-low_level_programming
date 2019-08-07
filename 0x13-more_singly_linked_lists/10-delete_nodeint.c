@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include "lists.h"
 /**
- *
- *
- *
- *
+ * delete_nodeint_at_index - function that deletes a node in a nth position
+ * @head: head pointer of the function
+ * @index: iterator
+ * Return: the index
  */
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
