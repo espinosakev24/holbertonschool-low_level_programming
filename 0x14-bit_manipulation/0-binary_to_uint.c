@@ -11,7 +11,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int n2 = 0;
 
 	if (b == NULL)
-		return (NULL);
+		return (0);
 
 	while (a < 32)
 	{
