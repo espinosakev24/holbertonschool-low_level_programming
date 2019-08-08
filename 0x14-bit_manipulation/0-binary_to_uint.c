@@ -10,6 +10,9 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int p2[32], a = 0, pot = 1, n = 0, result = 0;
 	unsigned int n2 = 0;
 
+	if (b == NULL)
+		return (NULL);
+
 	while (a < 32)
 	{
 		if (a == 0)
