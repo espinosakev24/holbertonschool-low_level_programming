@@ -8,10 +8,9 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	if (m > 64)
-		return (-1);
+	unsigned int a = 5;
 
 	n = 1;
 	m = 1;
-	return (0);
+		return (a);
 }
