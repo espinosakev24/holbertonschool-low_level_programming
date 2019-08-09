@@ -11,12 +11,12 @@ unsigned long int index = 2, a = 0;
 
 	if (n == 0)
 	{
-		putchar(0 + '0');
+		putchar('0');
 		return;
 	}
 	if (n == 1)
 	{
-		putchar(1 + '0');
+		putchar('1');
 	}
 	while (index <= n && a < 62)
 	{
@@ -30,12 +30,12 @@ unsigned long int index = 2, a = 0;
 	{
 		if ((index & n) == 0)
 		{
-			putchar(0 + '0');
+			putchar('0');
 			a++;
 		}
 		else
 		{
-			putchar(1 + '0');
+			putchar('1');
 		}
 		index >>= 1;
 	}
