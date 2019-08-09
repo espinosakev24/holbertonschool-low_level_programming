@@ -15,9 +15,10 @@ void print_binary(unsigned long int n)
 		_putchar('0');
 		return;
 	}
-	if (n == 1)
+	else if (n == 1)
 	{
 		_putchar('1');
+		return;
 	}
 	while (index <= n && a < 62)
 	{
@@ -40,4 +41,24 @@ void print_binary(unsigned long int n)
 		}
 		index >>= 1;
 	}
+}
+
+/**
+ * main - check the code for Holberton School students.
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+    print_binary(0);
+    printf("\n");
+    print_binary(1);
+    printf("\n");
+    print_binary(98);
+    printf("\n");
+    print_binary(1024);
+    printf("\n");
+    print_binary((1 << 10) + 1);
+    printf("\n");
+    return (0);
 }
