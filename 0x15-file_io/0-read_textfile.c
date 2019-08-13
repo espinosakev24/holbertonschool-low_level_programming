@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stdlib.h>
 #include <fcntl.h>
 #include "holberton.h"
 /**
@@ -9,9 +10,10 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
+	ssize_t w = 0;
 	int fd = open(filename, O_RDONLY);
 	ssize_t n = 0;
-	char buff[1000];
+	char *buff = malloc((sizeof(char)) * (letters));
 
 	if (fd == -1)
 		return (0);
@@ -20,10 +22,15 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	n = read(fd, buff, letters);
-	if (!n)
+	if (n == -1)
+	{
 		return (0);
-	write(1, buff, n);
-	return (n);
+	}
+	w = write(STDOUT_FILENO, buff, n);
 	close(fd);
-	return (0);
+	if (w == -1)
+	{
+		return (0);
+	}
+	return (w);
 }
