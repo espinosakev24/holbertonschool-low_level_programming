@@ -2,9 +2,9 @@
 #include <elf.h>
 /**
  * main - function that displays elf file content
- * Return: 0
+ * Return: 1
  */
 int main(void)
 {
-	return (0);
+	return (1);
 }
