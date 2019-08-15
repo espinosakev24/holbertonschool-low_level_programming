@@ -12,8 +12,10 @@
 int cp_file_content(const char *src, char *dest)
 {
 	ssize_t fd_src = open(src, O_RDONLY);
-	ssize_t fd_dest = open(dest, O_WRONLY | TRUNC);
-	int read_src = 0;
+	ssize_t fd_dest = open(dest, O_WRONLY | O_TRUNC);
+	ssize_t read_src = 0;
+	char *buff = malloc(sizeof(char) * (1024));
+
 	if (fd_src == -1)
 	{
 		char *err_1 = "Error: Can't read from file NAME_OF_THE_FILE\n";
@@ -22,6 +24,17 @@ int cp_file_content(const char *src, char *dest)
 		write(STDERR_FILENO, err_1, size_1);
 		exit(98);
 	}
+	read_src = read(fd_src, buff, 1024);
+	if (read_src == -1)
+	{
+		char *err_2 = "Error: Can't read from file NAME_OF_THE_FILE";
+		int size_2 = _strlen(err_2);
+
+		write(STDERR_FILENO, err_2, size_2);
+	}
+	write(fd_dest, buff, 1024);
+	close(fd_src);
+	close(fd_dest);
 	return (0);
 }
 /**
