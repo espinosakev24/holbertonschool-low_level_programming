@@ -2,9 +2,8 @@
 #include <stdlib.h>
 
 
-/*int main()
+int main()
 {
-	char *string;
 	char *buffer;
 	size_t size = 32;
 
@@ -12,16 +11,11 @@
 	if (buffer == NULL)
 		exit(1);
 
-	printf("$");
-	getline(&buffer, &size, stdin);
-	printf("%s", buffer);
-	return(0);
-}*/
-int main()
-{
-	while (stdin != EOF)
+	
+	printf("$ ");
+	while ((getline(&buffer, &size, stdin)) != EOF)
 	{
-		printf("$");
+		printf("$ ");
 	}
-	return (0);
+	return(0);
 }
