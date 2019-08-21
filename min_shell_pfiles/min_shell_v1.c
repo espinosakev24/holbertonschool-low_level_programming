@@ -26,14 +26,17 @@ int main(void)
 	{
 	/*Tty to command mode*/
 		if (tty == 1)
-		{
 			printf("$ ");
-		}
 	/*__________________________________*/
-
 		input = getline(&buffer, &size, stdin);
-		if (input == EOF)
+		if (tty == 0 && input == EOF)
 			break;
+		if (input == EOF)
+		{
+			write(1, "\n", 1);
+			break;
+		}
+		
 		if (*buffer == '\n')
 			continue;
 		/*Setting the last position of the buffer to '\0' character*/
