@@ -9,9 +9,11 @@
  */
 int main(void)
 {
+	char *delim = " \n\t\a";
 	static int main_var = 1;
 	char *tokens[1024];
-	int buff_size = 0, n = 1, command;
+	int tty = isatty(STDIN_FILENO);
+	int buff_size = 0, n = 1, command, input;
 	pid_t pid_fork, child_p;
 	char *buffer;
 	size_t size = 32;
@@ -22,15 +24,21 @@ int main(void)
 	/* shell with no arguments*/
 	while (main_var)
 	{
-		printf("$ ");
-		if ((getline(&buffer, &size, stdin)) == EOF)
+	/*Tty to command mode*/
+		if (tty == 1)
 		{
-			break;
+			printf("$ ");
 		}
-	/*Setting the last position of the buffer to '\0' character*/
+	/*__________________________________*/
+
+		input = getline(&buffer, &size, stdin);
+		if (input == EOF)
+			break;
+		if (*buffer == '\n')
+			continue;
+		/*Setting the last position of the buffer to '\0' character*/
 		buff_size = strlen(buffer);
 		buffer[buff_size - 1] = '\0';
-
 		pid_fork = fork();
 		if (pid_fork == -1)
 		{	perror("Error");
@@ -40,8 +48,8 @@ int main(void)
 		else if (pid_fork == 0)
 		{
 	/*separating the strings of the buffer and storing them in _tokens_ variable*/
-			tokens[0] = strtok(buffer, " ");
-			while ((tokens[n] = strtok(NULL, " ")))
+			tokens[0] = strtok(buffer, delim);
+			while ((tokens[n] = strtok(NULL, delim)))
 			{
 				n++;
 			}
