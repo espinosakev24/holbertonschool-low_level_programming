@@ -19,8 +19,3 @@ char *path(char *PATH)
 	}
 	return (NULL);
 }
-int main(void)
-{
-	printf("%s\n", path("PATH"));
-	return (0);
-}
