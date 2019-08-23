@@ -1,36 +1,62 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "holberton.h"
 
 extern char **environ;
 
-char **path(char *PATH) 
+char **get_env(char *PATH, char *full_path[500])
 {
-	int n = 0, a = 0;
-	char **ev;
+	int n = 0, a = 0, len = 0, b = 0, c = 0;
+	char *ev[500];
 	char *var;
 	/* ----- full_path needs being freed ----- */
-	char **full_path = malloc(sizeof(char) * 1024);
 	char *path;
 
-	for (ev = environ; *ev != NULL; ev++)
+	while (environ[b] !=  NULL)
 	{
-		if (_strcmp(strtok(*ev, "="), PATH) == 0)
+		ev[b] = malloc(sizeof(char) * 1000);
+		strcpy(ev[b], environ[b]);
+		b++;
+	}
+	ev[b] = NULL;
+
+	for (; ev[c] != NULL; c++)
+	{
+		if (_strcmp(strtok(ev[c], "="), PATH) == 0)
 		{
 			var = strtok(NULL, "=");
 		}
 	}
-	full_path[a] = strtok(var, ":");
-	while (full_path[a] != NULL)
+	
+	path = strtok(var, ":");
+	while (path)
 	{
+		full_path[a] = malloc(sizeof(char) * 1000);
+		strcpy(full_path[a], path);
+		path = strtok(NULL, ":");
 		a++;
-		full_path[a] = strtok(NULL, ":");
 	}
+		full_path[a] = NULL;
 	return (full_path);
 }
 int main(void)
 {
-	char **str = path("PATH");
-	printf("%s\n", str[1]);
+	int n = 0, a = 0;
+	char *str[500];
+
+	get_env("PATH", str);
+	while (str[n] != NULL)
+	{
+		printf("%s\n", str[n]);
+		n++;
+	}
+	while (str[a] != NULL)
+	{
+		free(str[a]);
+		a++;
+	}
+	free(*str);
 	return (0);
+	
 }

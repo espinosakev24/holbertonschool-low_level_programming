@@ -16,19 +16,18 @@ int main(void)
 	int tty = isatty(STDIN_FILENO);
 	int buff_size = 0, n = 1, command, input;
 	pid_t pid_fork, child_p;
-	char *buffer;
+	char *buffer; 
+	char **path = get_env("PATH");
 	size_t size = 32;
 
 	buffer = malloc((sizeof(char)) * size);
 	if (buffer == NULL)
 		exit(1);
-	/* shell with no arguments*/
 	while (main_var)
 	{
-	/*Tty to command mode*/
+	/*__ISATTY__ : using isatty to run the shell in command and interact mode*/
 		if (tty == 1)
 			printf("Arbolets$ ");
-	/*__________________________________*/
 		input = getline(&buffer, &size, stdin);
 		if (tty == 0 && input == EOF)
 			break;
@@ -37,16 +36,16 @@ int main(void)
 			write(1, "\n", 1);
 			break;
 		}
-		
+	/*__PRESS_ENTER__ : if press enter(\n) nothing happens*/	
 		if (*buffer == '\n')
 			continue;
-		/*Setting the last position of the buffer to '\0' character*/
+	/*__REMOVING_\n__ : Setting the last position of the buffer to '\0' character*/
 		buff_size = _strlen(buffer);
 		buffer[buff_size - 1] = '\0';
-		/*ending the shell with exit*/
+	/*__EXIT__ : ending the shell with exit*/
 		if (_strcmp(buffer, "exit") == 0)
 			exit(1);
-		/*----------------------------*/
+	/*__USING_FORK__ creating child proccess*/
 		pid_fork = fork();
 		if (pid_fork == -1)
 		{	perror("Error");
@@ -55,13 +54,23 @@ int main(void)
 		}
 		else if (pid_fork == 0)
 		{
-	/*separating the strings of the buffer and storing them in _tokens_ variable*/
+	/* __TOKENIZING_BUFFER__ : storing buffer strings in _tokens_ variable*/
 			tokens[0] = strtok(buffer, delim);
 			while ((tokens[n] = strtok(NULL, delim)))
 			{
 				n++;
-			}	
-	/*Execute a the command from argv[0] that is stored in buffer*/
+			}
+	/*__PRINTENV__ : print the env when typing "env" word*/
+		if (_strcmp(tokens[0], "env") == 0)
+		{
+			print_env();
+			break;
+		}
+	/*__EXECUTE_COMMANDS__ : Execute command with arguments*/
+			/*if (access(_strcat(path[1], tokens[0]), 777) == 0)
+			{
+				execve(path[1], tokens, NULL);
+			}*/
 			command = execve(tokens[0], tokens, NULL);
 			if (command == -1)
 			{	perror("Error");
@@ -69,10 +78,10 @@ int main(void)
 				exit(EXIT_FAILURE);
 			}
 		}
+	/*__FORK_CHILD_END__ : child proccess is finished*/
 		else
 			wait(&child_p);
 
 	}
-	/* shell with no arguments*/
 	return (0);
 }

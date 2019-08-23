@@ -1,16 +1,15 @@
 #include "holberton.h"
 /**
- * _strncat - check the code for Holberton School students.
+ * _strcat - check the code for Holberton School students.
  * @dest: hello
  * @src: world!
- * @n: values to the function
  * Return: Always dest.
  */
-char *_strncat(char *dest, char *src, int n)
+char *_strcat(char *dest, char *src)
 {
-	int len, i;
+	int len, n;
 
-	i = 0;
+	n = 0;
 	len = 0;
 
 	while (dest[len] != '\0')
@@ -18,12 +17,12 @@ char *_strncat(char *dest, char *src, int n)
 		len++;
 	}
 
-	while (src[i] != '\0' && i < n)
+	while (src[n] != '\0')
 	{
-		dest[len + i] = src[i];
-		i++;
+		dest[len + n] = src[n];
+		n++;
 	}
 
-	dest[len + i] = '\0';
-	return (dest);
+	dest[n + len] = '\0';
+return (dest);
 }
