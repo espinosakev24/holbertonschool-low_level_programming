@@ -4,25 +4,33 @@
 
 extern char **environ;
 
-char *path(char *PATH) 
+char **path(char *PATH) 
 {
-	int n = 0;
+	int n = 0, a = 0;
 	char **ev;
 	char *var;
+	/* ----- full_path needs being freed ----- */
+	char **full_path = malloc(sizeof(char) * 1024);
 	char *path;
 
 	for (ev = environ; *ev != NULL; ev++)
 	{
-		if (strcmp(strtok(*ev, "="), PATH) == 0)
+		if (_strcmp(strtok(*ev, "="), PATH) == 0)
 		{
 			var = strtok(NULL, "=");
 		}
 	}
-	path = strtok(var, ":");
-	return (path);
+	full_path[a] = strtok(var, ":");
+	while (full_path[a] != NULL)
+	{
+		a++;
+		full_path[a] = strtok(NULL, ":");
+	}
+	return (full_path);
 }
 int main(void)
 {
-	printf("%s\n", path("PATH"));
+	char **str = path("PATH");
+	printf("%s\n", str[1]);
 	return (0);
 }
