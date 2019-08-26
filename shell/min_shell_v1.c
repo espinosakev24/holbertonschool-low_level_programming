@@ -17,7 +17,8 @@ int main(void)
 	int buff_size = 0, n = 1, command, input;
 	pid_t pid_fork, child_p;
 	char *buffer; 
-	char **path = get_env("PATH");
+	char **path;
+	char *str_command;
 	size_t size = 32;
 
 	buffer = malloc((sizeof(char)) * size);
@@ -43,7 +44,7 @@ int main(void)
 		buff_size = _strlen(buffer);
 		buffer[buff_size - 1] = '\0';
 	/*__EXIT__ : ending the shell with exit*/
-		if (_strcmp(buffer, "exit") == 0)
+		if (strcmp(buffer, "exit") == 0)
 			exit(1);
 	/*__USING_FORK__ creating child proccess*/
 		pid_fork = fork();
@@ -61,21 +62,21 @@ int main(void)
 				n++;
 			}
 	/*__PRINTENV__ : print the env when typing "env" word*/
-		if (_strcmp(tokens[0], "env") == 0)
-		{
-			print_env();
-			break;
-		}
-	/*__EXECUTE_COMMANDS__ : Execute command with arguments*/
-			/*if (access(_strcat(path[1], tokens[0]), 777) == 0)
+			if (_strcmp(tokens[0], "env") == 0)
 			{
-				execve(path[1], tokens, NULL);
-			}*/
-			command = execve(tokens[0], tokens, NULL);
-			if (command == -1)
-			{	perror("Error");
-				free(buffer);
-				exit(EXIT_FAILURE);
+				print_env();
+				break;
+			}
+	/*__EXECUTE_COMMANDS__ : Execute command with arguments*/
+			str_command = check_path(get_env("PATH"), tokens[0], tokens);
+			if (access(str_command, X_OK) == -1);
+			{
+				command = execve(tokens[0], tokens, NULL);
+				if (command == -1)
+				{	perror("Error");
+					free(buffer);
+					exit(EXIT_FAILURE);
+				}
 			}
 		}
 	/*__FORK_CHILD_END__ : child proccess is finished*/
