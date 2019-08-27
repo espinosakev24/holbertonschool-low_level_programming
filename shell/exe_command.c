@@ -1,5 +1,10 @@
 #include "holberton.h"
-
+/**
+ * exec_command - function that search a command and executes it.
+ * @tokens: Is a double pointer that stores the buffer tokenized
+ * @buffer: pointer that stores the string passed in the std input
+ * Return: void.
+ */
 void exec_command(char **tokens, char *buffer)
 {
 	int command;
