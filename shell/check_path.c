@@ -1,4 +1,11 @@
 #include "holberton.h"
+/**
+ * check_path - function that checks and execute PATH
+ * @paths: PATH variable tokenized.
+ * @command: command that will be linked with the path
+ * @tokens: input tokenized
+ * Return: path if exists
+ */
 char *check_path(char **paths, char *command, char **tokens)
 {
 	int a = 0;

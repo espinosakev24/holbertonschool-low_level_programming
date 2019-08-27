@@ -1,6 +1,10 @@
 #include "holberton.h"
-
-char **get_env(char *PATH) 
+/**
+ * get_env - function that tokenizes the env variable
+ * @PATH: key to extract the value
+ * Return: value of the key
+ */
+char **get_env(char *PATH)
 {
 	int a = 0, i = 0;
 	char **ev;
