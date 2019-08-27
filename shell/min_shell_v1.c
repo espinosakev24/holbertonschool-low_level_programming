@@ -5,13 +5,12 @@
  */
 int main(void)
 {
-	char *delim = " \n\t\a";
 	static int main_var = 1;
-	char *tokens[1024];
-	int n = 1;
+	char **tokens = malloc(sizeof(char *) * 64);
 	pid_t pid_fork, child_p;
 	char *buffer, *buff_2 = malloc(sizeof(char) * 1024);
 
+	signal(SIGINT, SIG_IGN);
 	buffer = malloc((sizeof(char)) * 32);
 	if (buffer == NULL)
 		exit(1);
@@ -26,9 +25,8 @@ int main(void)
 		if (pid_fork == -1)
 			check_negative_child(buffer);
 		else if (pid_fork == 0)
-		{	tokens[0] = strtok(buffer, delim);
-			while ((tokens[n] = strtok(NULL, delim)))
-				n++;
+		{
+			tokens = tok_buffer(tokens, buffer);
 			main_print_env(tokens);
 			exec_command(tokens, buffer);	}
 		else
