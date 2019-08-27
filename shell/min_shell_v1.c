@@ -13,30 +13,19 @@ int main(void)
 	char *delim = " \n\t\a";
 	static int main_var = 1;
 	char *tokens[1024];
-	int tty = isatty(STDIN_FILENO);
-	int buff_size = 0, n = 1, command, input;
+	int buff_size = 0, n = 1, command;
 	pid_t pid_fork, child_p;
-	char *buffer; 
+	char *buffer, *buff_2;
 	char **path;
-	char *str_command;
-	size_t size = 32;
+	char *str_command, *str_env = "env";
 
-	buffer = malloc((sizeof(char)) * size);
+	buffer = malloc((sizeof(char)) * 32);
 	if (buffer == NULL)
 		exit(1);
 	while (main_var)
 	{
 	/*__ISATTY__ : using isatty to run the shell in command and interact mode*/
-		if (tty == 1)
-			printf("Arbolets$ ");
-		input = getline(&buffer, &size, stdin);
-		if (tty == 0 && input == EOF)
-			break;
-		if (input == EOF)
-		{
-			write(1, "\n", 1);
-			break;
-		}
+		buffer = getline_tty(buff_2);
 	/*__PRESS_ENTER__ : if press enter(\n) nothing happens*/	
 		if (*buffer == '\n')
 			continue;
@@ -62,7 +51,7 @@ int main(void)
 				n++;
 			}
 	/*__PRINTENV__ : print the env when typing "env" word*/
-			if (_strcmp(tokens[0], "env") == 0)
+			if (_strcmp(tokens[0], str_env) == 0)
 			{
 				print_env();
 				break;
