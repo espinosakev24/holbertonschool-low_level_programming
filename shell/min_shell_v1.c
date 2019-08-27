@@ -8,7 +8,7 @@ int main(void)
 	char *delim = " \n\t\a";
 	static int main_var = 1;
 	char *tokens[1024];
-	int buff_size = 0, n = 1;
+	int n = 1;
 	pid_t pid_fork, child_p;
 	char *buffer, *buff_2 = malloc(sizeof(char) * 1024);
 	char *str_env = "env";
@@ -17,40 +17,28 @@ int main(void)
 	if (buffer == NULL)
 		exit(1);
 	while (main_var)
-	{
-	/*__ISATTY__ : using isatty to run the shell in command and interact mode*/
-		buffer = getline_tty(buff_2);
-	/*__PRESS_ENTER__ : if press enter(\n) nothing happens*/
+	{	buffer = getline_tty(buff_2);
 		if (*buffer == '\n')
 			continue;
-	/*__REMOVING_\n__ : Setting the last position of the buffer to '\0' character*/
-	buff_size = _strlen(buffer);
-		buffer[buff_size - 1] = '\0';
-	/*__EXIT__ : ending the shell with exit*/
+		sw_enter_key(buffer);
 		if (strcmp(buffer, "exit") == 0)
 			exit(1);
-	/*__USING_FORK__ creating child proccess*/
 		pid_fork = fork();
 		if (pid_fork == -1)
 			check_negative_child(buffer);
 		else if (pid_fork == 0)
 		{
-	/* __TOKENIZING_BUFFER__ : storing buffer strings in _tokens_ variable*/
 			tokens[0] = strtok(buffer, delim);
 			while ((tokens[n] = strtok(NULL, delim)))
 				n++;
-	/*__PRINTENV__ : print the env when typing "env" word*/
 			if (_strcmp(tokens[0], str_env) == 0)
 			{	print_env();
 				break;
 			}
-	/*__EXECUTE_COMMANDS__ : Execute command with arguments*/
 			exec_command(tokens, buffer);
 		}
-	/*__FORK_CHILD_END__ : child proccess is finished*/
 		else
 			wait(&child_p);
-
 	}
 	return (0);
 }
