@@ -11,7 +11,6 @@ int main(void)
 	int n = 1;
 	pid_t pid_fork, child_p;
 	char *buffer, *buff_2 = malloc(sizeof(char) * 1024);
-	char *str_env = "env";
 
 	buffer = malloc((sizeof(char)) * 32);
 	if (buffer == NULL)
@@ -27,18 +26,11 @@ int main(void)
 		if (pid_fork == -1)
 			check_negative_child(buffer);
 		else if (pid_fork == 0)
-		{
-			tokens[0] = strtok(buffer, delim);
+		{	tokens[0] = strtok(buffer, delim);
 			while ((tokens[n] = strtok(NULL, delim)))
 				n++;
-			if (_strcmp(tokens[0], str_env) == 0)
-			{	print_env();
-				break;
-			}
-			exec_command(tokens, buffer);
-		}
+			main_print_env(tokens);
+			exec_command(tokens, buffer);	}
 		else
-			wait(&child_p);
-	}
-	return (0);
-}
+			wait(&child_p);	}
+	return (0);	}

@@ -10,6 +10,7 @@ char *getline_tty(char *buffer);
 int check_negative_child(char *buffer);
 void exec_command(char **tokens, char *buffer);
 char *sw_enter_key(char *buffer);
+char **main_print_env(char **tokens);
 char *check_path(char **paths, char *command, char **tokens);
 char *_strcat(char *dest, char *src);
 extern char **environ;
