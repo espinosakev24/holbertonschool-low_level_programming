@@ -4,7 +4,7 @@
  * print_env - function that print the env variables
  * Return: void;
  */
-void print_env(void) 
+void print_env(void)
 {
 	int i = 1;
 	char *s = *environ;
@@ -12,6 +12,6 @@ void print_env(void)
 	for (; s; i++)
 	{
 		printf("%s\n", s);
-		s = *(environ+i);
+		s = *(environ + i);
 	}
 }

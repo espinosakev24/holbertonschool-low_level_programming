@@ -1,4 +1,9 @@
 #include "holberton.h"
+/**
+ * getline_tty - function that read a line and checks teletypes
+ * @buffer: string that will stores the input
+ * Return: buffer.
+ */
 char *getline_tty(char *buffer)
 {
 	int tty = isatty(STDIN_FILENO);

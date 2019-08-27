@@ -26,7 +26,7 @@ int main(void)
 	{
 	/*__ISATTY__ : using isatty to run the shell in command and interact mode*/
 		buffer = getline_tty(buff_2);
-	/*__PRESS_ENTER__ : if press enter(\n) nothing happens*/	
+	/*__PRESS_ENTER__ : if press enter(\n) nothing happens*/
 		if (*buffer == '\n')
 			continue;
 	/*__REMOVING_\n__ : Setting the last position of the buffer to '\0' character*/
@@ -58,7 +58,7 @@ int main(void)
 			}
 	/*__EXECUTE_COMMANDS__ : Execute command with arguments*/
 			str_command = check_path(get_env("PATH"), tokens[0], tokens);
-			if (access(str_command, X_OK) == -1);
+			if (access(str_command, X_OK) == -)
 			{
 				command = execve(tokens[0], tokens, NULL);
 				if (command == -1)
