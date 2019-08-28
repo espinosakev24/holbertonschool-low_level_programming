@@ -9,12 +9,12 @@
 #include "holberton.h"
 char *_memset(char *s, char b, unsigned int n);
 char *getline_tty(char *buffer, char **tokens);
-int check_negative_child(char *buffer);
+int check_negative_child(char *buffer, char **tokens);
 void exec_command(char **tokens, char *buffer, char **environ);
 char *sw_enter_key(char *buffer);
 char **main_print_env(char **tokens);
 char **tok_buffer(char **tokens, char *buffer);
-void err_execve(char *buffer);
+void err_execve(char *buffer, char **tokens);
 /* FREES FUNCTIONS */
 char **out_memory_check(char **ptr);
 void free_grid(char **grid);

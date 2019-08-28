@@ -26,25 +26,28 @@ int main(int argc, char **argv, char **envp)
 			continue;
 		sw_enter_key(buffer);
 		if (_strcmp(buffer, "exit") == 0)
-			{
-				free(tokens);
+			{	free(tokens);
 				free(buffer);
 				exit(1);
 			}
 		pid_fork = fork();
 		if (pid_fork == -1)
-			check_negative_child(buffer);
+			check_negative_child(buffer, tokens);
 		else if (pid_fork == 0)
 		{	tokens = tok_buffer(tokens, buffer);
 			if (access(tokens[0], F_OK))
 			{	exec_command(tokens, buffer, envp);
-				err_execve(buffer);
+				err_execve(buffer, tokens);
 			}
 			else
 			{	execve(tokens[0], tokens, NULL);
-				err_execve(buffer);
+				err_execve(buffer, tokens);
 			}
 		}
 		else
-			wait(&child_p);	}
-	return (0);	}
+		{
+			wait(&child_p);
+		}
+	}
+	return (0);
+}

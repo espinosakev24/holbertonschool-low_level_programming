@@ -15,6 +15,7 @@ void exec_command(char **tokens, char *buffer, char **environ)
 	{
 		execve(tokens[0], tokens, NULL);
 		perror("Error");
+		free(tokens);
 		free(buffer);
 		exit(EXIT_FAILURE);
 	}

@@ -4,9 +4,10 @@
  * @buffer: pointer that stores the std input
  * return: void.
  */
-void err_execve(char *buffer)
+void err_execve(char *buffer, char **tokens)
 {
 	perror("Error");
+	free(tokens);
 	free(buffer);
 	exit(EXIT_FAILURE);
 }

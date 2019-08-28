@@ -16,9 +16,8 @@ char **get_env(char *PATH)
 	memset(path, '\0', (sizeof(char) * 1024));
 	out_memory_check(path);
 	out_memory_check(cp_env);
-	while (i < 50)
+	while (environ[i] != NULL)
 	{	cp_env[i] = malloc(sizeof(char) * 100);
-		memset(cp_env[i], '\0', 100);
 		i++;	}
 	i = 0;
 	while (environ[a])
@@ -31,7 +30,7 @@ char **get_env(char *PATH)
 		{	var = strtok(NULL, "=");
 			break;	}
 	}
-	while (i < 100)
+	while (environ[i] != NULL)
 	{	path[i] = malloc(sizeof(char) * 100);
 		i++;	}
 
