@@ -4,7 +4,7 @@
  * @buffer: string that will stores the input
  * Return: buffer.
  */
-char *getline_tty(char *buffer)
+char *getline_tty(char *buffer, char **tokens)
 {
 	int tty = isatty(STDIN_FILENO);
 	size_t size = 32;
@@ -16,10 +16,16 @@ char *getline_tty(char *buffer)
 	}
 	input = getline(&buffer, &size, stdin);
 	if (tty == 0 && input == EOF)
+	{
+		free_grid(tokens);
+		free(buffer);
 		exit(0);
+	}
 
 	if (input == EOF)
 	{
+		free(tokens);
+		free(buffer);
 		write(1, "\n", 1);
 		exit(0);
 	}

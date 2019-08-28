@@ -15,7 +15,7 @@ char *check_path(char **paths, char *command, char **tokens, char **environ)
 	{
 		_strcat(paths[a], "/");
 		_strcat(paths[a], command);
-		if (access(paths[a], X_OK) == 0)
+		if (access(paths[a], F_OK) == 0)
 		{
 			execve(paths[a], tokens, environ);
 			return (paths[a]);

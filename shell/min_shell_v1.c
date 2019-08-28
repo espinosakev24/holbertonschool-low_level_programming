@@ -11,7 +11,7 @@ int main(int argc, char **argv, char **envp)
 	static int main_var = 1;
 	char **tokens = malloc(sizeof(char *) * 64);
 	pid_t pid_fork, child_p;
-	char *buffer, *buff_2 = malloc(sizeof(char) * 1024);
+	char *buffer;
 	(void)argv;
 	(void)argc;
 
@@ -19,15 +19,18 @@ int main(int argc, char **argv, char **envp)
 	buffer = malloc((sizeof(char)) * 32);
 	out_memory_check(tokens);
 	no_mem_ptr(buffer);
-	no_mem_ptr(buff_2);
 	while (main_var)
 	{
-		buffer = getline_tty(buff_2);
+		buffer = getline_tty(buffer, tokens);
 		if (*buffer == '\n')
 			continue;
 		sw_enter_key(buffer);
-		if (strcmp(buffer, "exit") == 0)
-			exit(1);
+		if (_strcmp(buffer, "exit") == 0)
+			{
+				free(tokens);
+				free(buffer);
+				exit(1);
+			}
 		pid_fork = fork();
 		if (pid_fork == -1)
 			check_negative_child(buffer);
@@ -41,8 +44,6 @@ int main(int argc, char **argv, char **envp)
 			{	execve(tokens[0], tokens, NULL);
 				err_execve(buffer);
 			}
-			free(buffer);
-			free_grid(tokens);
 		}
 		else
 			wait(&child_p);	}

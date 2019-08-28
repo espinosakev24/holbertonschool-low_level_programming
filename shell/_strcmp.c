@@ -1,25 +1,7 @@
-#include "holberton.h"
-/**
- * _strcmp - check the code for Holberton School students.
- * @s1: hello
- * @s2: world!
- * Return: Always dest.
- */
-int _strcmp(char *s1, char *s2)
+int _strcmp (char * s1, char * s2)
 {
-int a = 0;
-
-	while (s1[a] != '\0')
-	{
-		if (s1[a] < s2[a])
-		{
-			return (s1[a] - s2[a]);
-		}
-		if (s1[a] > s2[a])
-		{
-			return (s1[a] - s2[a]);
-		}
-		a++;
-	}
-	return (0);
+    for(; *s1 == *s2; ++s1, ++s2)
+        if(*s1 == 0)
+            return 0;
+    return *(unsigned char *)s1 < *(unsigned char *)s2 ? -1 : 1;
 }
