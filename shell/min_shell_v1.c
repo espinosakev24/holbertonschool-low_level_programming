@@ -17,8 +17,9 @@ int main(int argc, char **argv, char **envp)
 
 	signal(SIGINT, SIG_IGN);
 	buffer = malloc((sizeof(char)) * 32);
-	if (buffer == NULL)
-		exit(1);
+	out_memory_check(tokens);
+	no_mem_ptr(buffer);
+	no_mem_ptr(buff_2);
 	while (main_var)
 	{
 		buffer = getline_tty(buff_2);
