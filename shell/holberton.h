@@ -9,11 +9,12 @@
 #include "holberton.h"
 char *getline_tty(char *buffer);
 int check_negative_child(char *buffer);
-void exec_command(char **tokens, char *buffer);
+void exec_command(char **tokens, char *buffer, char **environ);
 char *sw_enter_key(char *buffer);
 char **main_print_env(char **tokens);
 char **tok_buffer(char **tokens, char *buffer);
-char *check_path(char **paths, char *command, char **tokens);
+void err_execve(char *buffer);
+char *check_path(char **paths, char *command, char **tokens, char **environ);
 char *_strcat(char *dest, char *src);
 extern char **environ;
 int _strlen(char *s);

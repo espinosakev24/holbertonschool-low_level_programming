@@ -10,32 +10,34 @@ char **get_env(char *PATH)
 	char **ev;
 	char *var, *str_c;
 	char **path = malloc(sizeof(char *) * 1024);
+	char **cp_env = malloc(sizeof(char *) * 1024);
 
-	for (ev = environ; *ev != NULL; ev++)
+	while (i < 100)
+	{	cp_env[i] = malloc(sizeof(char) * 100);
+		i++;	}
+	i = 0;
+	while (environ[a])
+	{	_strcpy(cp_env[a], environ[a]);
+		a++;	}
+	a = 0;
+	for (ev = cp_env; *ev != NULL; ev++)
 	{
 		if (_strcmp(strtok(*ev, "="), PATH) == 0)
-		{
-			var = strtok(NULL, "=");
-		}
+		{	var = strtok(NULL, "=");
+			break;	}
 	}
 	while (i < 100)
-	{
-		path[i] = malloc(sizeof(char) * 100);
-		i++;
-	}
+	{	path[i] = malloc(sizeof(char) * 100);
+		i++;	}
 
 	str_c = strtok(var, ":");
 	_strcpy(path[a], str_c);
 	while (path[a])
-	{
-		a++;
+	{	a++;
 		str_c = strtok(NULL, ":");
 		if (!str_c)
-		{
 			break;
-		}
 		_strcpy(path[a], str_c);
 	}
 	path[a] = NULL;
-	return (path);
-}
+	return (path);	}

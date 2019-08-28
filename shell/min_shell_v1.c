@@ -1,21 +1,27 @@
 #include "holberton.h"
 /**
  * main - function main - shell
+ * @argc: amount of arguments of the main function
+ * @argv: double pointer to each argument of the main
+ * @envp: double pointer to the enviroment variable
  * Return: 0.
  */
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
 	static int main_var = 1;
 	char **tokens = malloc(sizeof(char *) * 64);
 	pid_t pid_fork, child_p;
 	char *buffer, *buff_2 = malloc(sizeof(char) * 1024);
+	(void)argv;
+	(void)argc;
 
 	signal(SIGINT, SIG_IGN);
 	buffer = malloc((sizeof(char)) * 32);
 	if (buffer == NULL)
 		exit(1);
 	while (main_var)
-	{	buffer = getline_tty(buff_2);
+	{
+		buffer = getline_tty(buff_2);
 		if (*buffer == '\n')
 			continue;
 		sw_enter_key(buffer);
@@ -25,10 +31,16 @@ int main(void)
 		if (pid_fork == -1)
 			check_negative_child(buffer);
 		else if (pid_fork == 0)
-		{
-			tokens = tok_buffer(tokens, buffer);
-			main_print_env(tokens);
-			exec_command(tokens, buffer);	}
+		{	tokens = tok_buffer(tokens, buffer);
+			if (access(tokens[0], F_OK))
+			{	exec_command(tokens, buffer, envp);
+				err_execve(buffer);
+			}
+			else
+			{	execve(tokens[0], tokens, NULL);
+				err_execve(buffer);
+			}
+		}
 		else
 			wait(&child_p);	}
 	return (0);	}
