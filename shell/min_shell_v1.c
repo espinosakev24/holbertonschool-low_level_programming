@@ -41,6 +41,8 @@ int main(int argc, char **argv, char **envp)
 			{	execve(tokens[0], tokens, NULL);
 				err_execve(buffer);
 			}
+			free(buffer);
+			free_grid(tokens);
 		}
 		else
 			wait(&child_p);	}

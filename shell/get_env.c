@@ -12,6 +12,8 @@ char **get_env(char *PATH)
 	char **path = malloc(sizeof(char *) * 1024);
 	char **cp_env = malloc(sizeof(char *) * 1024);
 
+	out_memory_check(path);
+	out_memory_check(cp_env);
 	while (i < 100)
 	{	cp_env[i] = malloc(sizeof(char) * 100);
 		i++;	}
