@@ -1,4 +1,10 @@
 #include "lists.h"
+/**
+ * add_dnodeint_end - function that adds a node at the end of a db lkedlist
+ * @head: db pointer to the db linked list
+ * @n: db linked list data
+ * Return: new_node or end node
+ */
 
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
