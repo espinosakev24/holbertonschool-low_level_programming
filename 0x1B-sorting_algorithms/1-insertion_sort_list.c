@@ -1,51 +1,35 @@
 #include "sort.h"
 /**
- *
- *
- *
+ * insertion_sort_list - function that sort a list
+ * @list: dp to the list
+ * Return: Nothing
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *cpr;
-	listint_t *current;
-	current = *list;
+	listint_t *cn = NULL, *cp = NULL, *cu = NULL;
 
-	while(current)
+	cu = (*list)->next;
+	while (cu)
 	{
-		if (current->next == NULL)
-			return;
-		/* Case: Don't having two nodes to go through forward */
-		if (current->n > current->next->n && current->next->next == NULL)
+		if (cu->prev != NULL && cu->n < cu->prev->n)
 		{
-			cpr = current->prev;
-			current->prev = current->next;
-			current->next = NULL;
-			current->prev->prev = cpr;
-			current->prev->prev->next = current->prev;
-			current->prev->next = current;
+			cn = cu->next;
+			cp = cu->prev;
+			cu->prev = cu->prev->prev;
+			if (cu->prev != NULL)
+				cu->prev->next = cu;
+			cu->next = cp;
+			cu->next->prev = cu;
+			cu->next->next = cn;
+			if (cn != NULL)
+				cn->prev = cu->next;
+			if (cu->prev == NULL)
+				*list = cu;
+			print_list(*list);
 		}
-		/* case: Standing in the first node */
-		else if (current->n > current->next->n && current->prev == NULL)
+		else if (cu->prev == NULL || cu->n > cu->prev->n)
 		{
-			current->prev = current->next;
-			current->next->prev = NULL;
-			current->next = current->next->next;
-			current->next->prev = current;
-			current->prev->next = current;
+			cu = cu->next;
 		}
-		/* Case: Still having two nodes to go through forward */
-		else if (current->n > current->next->n && current->next->next != NULL && current->prev != NULL)
-		{
-			cpr = current->prev;
-			current->prev = current->next;
-			current->next = current->next->next;
-			current->prev->prev = cpr;
-			current->prev->prev->next = current->prev;
-			current->prev->next = current;
-			current->next->prev = current;
-		}
-	current = current->next;
 	}
-	while(*list)
-		*list = (*list)->prev;
 }
