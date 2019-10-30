@@ -6,25 +6,16 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	int less = 0, ipiv = size - 1, n = 0;
-	int pos = n - 1, temp = 0, tsize = size - 1;
+	int n = 0, temp = 0, pos = -1;
 
-	while (less < ipiv)
+	temp = array[size - 1];
+	for (; n < ipiv; n++)
 	{
-		if (array[less] < array[ipiv])
+		if (array[n] < array[size - 1])
 			pos++
-			temp = array[less];
-			array[less] = array[gter];
-			arra[gter] = temp;
-			less++;
-		else
-			less++;
+			array[n] = array[pos];
+			arra[n] = temp;
 	}
-	while(tsize => grter + 1)
-	{
-		temp = array[tsize - 1];
-		array[tsize] = temp;
-		if (tsize == grter + 1)
-			array[grter] = array[size - 1];
-	}
+	array[temp] = array[pos + 1];
+	array[pos] = temp;
 }
