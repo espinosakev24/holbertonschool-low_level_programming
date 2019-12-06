@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 /**
- * binary_tree_is_full - function that check if a BT is full
+ * binary_tree_is_full - function that checks if a BT is full
  * @tree: pointer to the root of the BT
  * Return: 1 if BT is full otherwise 0
  */
@@ -11,10 +11,10 @@ int binary_tree_is_full(const binary_tree_t *tree)
 	full = binary_tree_size(tree->left) + binary_tree_size(tree->right);
 	if (!tree)
 		return (0);
-	if (full % 2 != 0)
-		return (0);
-	else
+	if (full % 2 == 0)
 		return (1);
+	else
+		return (0);
 }
 /**
  * binary_tree_size - function that measures
