@@ -1,7 +1,7 @@
 #include "binary_trees.h"
 /**
  * binary_tree_is_perfect - function that checks is a BT is perfect
- * @tree: pointer to the root of the binary tree
+ * @tree: pointer to the root of the binary tree.
  * Return: 1 if the BT is perfect, otherwise return 0
  */
 int binary_tree_is_perfect(const binary_tree_t *tree)
@@ -10,7 +10,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	int left = 0;
 
 	if (!tree)
-		return (1);
+		return (0);
 
 	right = binary_tree_height(tree->right);
 	left = binary_tree_height(tree->left);
