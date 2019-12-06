@@ -6,12 +6,15 @@
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
+	int full = 0;
+
+	full = binary_tree_size(tree->left) + binary_tree_size(tree->right);
 	if (!tree)
 		return (0);
-	if (binary_tree_size(tree->left) == binary_tree_size(tree->right))
-		return (1);
-	else
+	if (full % 2 != 0)
 		return (0);
+	else
+		return (1);
 }
 /**
  * binary_tree_size - function that measures
