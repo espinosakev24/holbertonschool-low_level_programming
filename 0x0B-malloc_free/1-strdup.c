@@ -1,36 +1,32 @@
 #include "holberton.h"
 #include <stdlib.h>
 /**
- * _strdup - check the code for Holberton School students.
- * @str: string that will be duplicated
- * Return: Always s if the code success.
- */
+ * *_strdup - creates a pointer to a new space in memory with
+ * @str: string and pointer
+ * Return: a pointer to a string
+*/
 char *_strdup(char *str)
 {
-	char *s;
-	int n = 0, a = 0;
-
 	if (str == NULL)
 	{
+		return ('\0');
+	}
+	int i = 0;
+	int j = 0;
+	char *du;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	du = (char *)malloc(sizeof(char) * i);
+	if (!du)
+	{
 		return (NULL);
 	}
-
-	while (str[n] != 0)
+	while (j < i)
 	{
-		n++;
+		du[j] = str[j];
+		j++;
 	}
-	s = malloc(sizeof(char) * (n + 1));
-	if (s == NULL)
-	{
-		return (NULL);
-	}
-
-	/*copying the string of *str inside *s */
-	for (a = 0; str[a]; a++)
-	{
-		s[a] = str[a];
-	}
-	*(s + a) = 0;
-
-	return (s);
+	return (du);
 }
